@@ -18,7 +18,7 @@ public class MotorRegraDAO {
     } 
 	
     public void adiciona(MotorRegra motorregra){ 
-        String sql = "INSERT INTO MotorRegra(cdFicha,NroSeqInclusao,cdLozalicao,cdEvento,cdGlosa) VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO MotorRegra(cdFicha,NroSeqInclusao,cdLocalizacao,cdEvento,cdGlosa) VALUES(?,?,?,?,?)";
         try { 
             PreparedStatement stmt = Connection.prepareStatement(sql);
             stmt.setInt(1, motorregra.getCdFicha());
