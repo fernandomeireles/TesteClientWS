@@ -5,6 +5,7 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 import javax.xml.ws.Service;
 
+import br.com.TesteWS.DAO.MotorRegraDAO;
 import br.com.TesteWS.Entity.MotorRegra;
 import br.com.TesteWS.Service.MotorRegraService;
 
@@ -45,7 +46,10 @@ public class App
 					resultado += "cdLozalicao:   "  + motorRegra.getCdLocalizao() + "\n";
 					resultado += "Evento:   "  + String.valueOf(motorRegra.getCdEvento()) + "\n";
 					resultado += "Glosa:   " + String.valueOf(motorRegra.getCdGlosa()) + "\n";
-		 
+					
+					MotorRegraDAO motorregraDAO = new MotorRegraDAO();
+					motorregraDAO.adiciona (motorRegra);
+					
 					// MENSAGEM COM O RESULTADO
 					JOptionPane.showMessageDialog(null, resultado);
 		 
