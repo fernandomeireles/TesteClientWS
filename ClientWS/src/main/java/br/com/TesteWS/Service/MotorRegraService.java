@@ -10,7 +10,9 @@ import javax.xml.ws.Response;
 import org.codehaus.jackson.jaxrs.JacksonJsonProvider;
 import org.glassfish.jersey.client.ClientConfig;
 
+import br.com.TesteWS.Entity.MotorGlosas;
 import br.com.TesteWS.Entity.MotorRegra;
+import br.com.TesteWS.Entity.MotorRegras;
 
 public class MotorRegraService {
 
@@ -40,6 +42,20 @@ public class MotorRegraService {
 		return response.readEntity(MotorRegra.class);
  
 	}
+	
+	public MotorGlosas GerarGlosas(int cdFicha){
+		 
+		this.webTarget = this.client.target(URL_SERVICE).path("cdFicha/").path(String.valueOf(cdFicha));
+ 
+		Invocation.Builder invocationBuilder =  this.webTarget.request(MediaType.APPLICATION_JSON);
+ 
+		javax.ws.rs.core.Response response = invocationBuilder.get();
+ 
+		return response.readEntity(MotorGlosas.class);
+ 
+	}
+	
+	
 	
 	
 }

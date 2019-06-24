@@ -1,12 +1,30 @@
 package br.com.TesteWS.Entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MotorRegra {
 	
-	private int cdFicha;
-	private int NroSeqInclusao;
-	private String cdLocalizao;
-	private int cdEvento;
-	private int cdGlosa;
+	protected int cdFicha;
+	protected int NroSeqInclusao;
+	protected String cdLocalizao;
+	protected int cdEvento;	
+	protected ArrayList cdGlosa;
+	/*
+	 * protected List<MotorGlosas> cdGlosa;
+	 * 
+	 * 
+	 * public MotorRegra() {
+	 * 
+	 * cdGlosa = new ArrayList<MotorGlosas>();
+	 * 
+	 * }
+	 * 
+	 * 
+	 * public List<MotorGlosas> getCdGlosa() { return cdGlosa; }
+	 * 
+	 * public void setCdGlosa(List<MotorGlosas> cdGlosa) { this.cdGlosa = cdGlosa; }
+	 */
 	
 	public int getCdFicha() {
 		return cdFicha;
@@ -32,12 +50,13 @@ public class MotorRegra {
 	public void setCdEvento(int cdEvento) {
 		this.cdEvento = cdEvento;
 	}
-	public int getCdGlosa() {
+	public ArrayList getCdGlosa() {
 		return cdGlosa;
 	}
-	public void setCdGlosa(int cdGlosa) {
+	public void setCdGlosa(ArrayList cdGlosa) {
 		this.cdGlosa = cdGlosa;
 	}
+	
 	
 	
 

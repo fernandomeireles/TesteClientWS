@@ -6,7 +6,9 @@ import javax.swing.JOptionPane;
 import javax.xml.ws.Service;
 
 import br.com.TesteWS.DAO.MotorRegraDAO;
+import br.com.TesteWS.Entity.MotorGlosas;
 import br.com.TesteWS.Entity.MotorRegra;
+import br.com.TesteWS.Entity.MotorRegras;
 import br.com.TesteWS.Service.MotorRegraService;
 
 
@@ -33,29 +35,27 @@ public class App
 		     escolha = ler.next();
 		 
 				
-				MotorRegra motorRegra = client.ConsultarGlosa(Integer.parseInt(escolha));
-		 
-				if (motorRegra == null) {
-		 
-					System.out.println("Sem Ficha !");
-		 
+		     MotorGlosas motorglosas = client.GerarGlosas(Integer.parseInt(escolha));
+		     
+		     StringBuilder stringBuiderDetalhesMotor = new StringBuilder();
 					
-					main(null);
-				} else {
+		     for (MotorRegra motorregra : motorglosas) {
+		    	 
+		    	stringBuiderDetalhesMotor.append("Ficha: ");
+		    	stringBuiderDetalhesMotor.append(String.valueOf(((MotorRegra) motorglosas).getCdFicha()));
+		    	stringBuiderDetalhesMotor.append(" NroSeqInclusao: ");
+				stringBuiderDetalhesMotor.append(String.valueOf(((MotorRegra) motorglosas).getNroSeqInclusao()));
+				stringBuiderDetalhesMotor.append(" Localizacao: ");
+				stringBuiderDetalhesMotor.append(((MotorRegra) motorglosas).getCdLocalizao());
+				stringBuiderDetalhesMotor.append(" Evento: ");
+		    	stringBuiderDetalhesMotor.append(String.valueOf(((MotorRegra) motorglosas).getCdEvento()));
+		    	stringBuiderDetalhesMotor.append(" Glosa: ");
+				stringBuiderDetalhesMotor.append(String.valueOf(((MotorGlosas) motorglosas).getListcdGlosa()));
+				stringBuiderDetalhesMotor.append("\n\n");
 		 
-					String resultado = null;
-		 
+				}		
 					
-					resultado = "Ficha: " + String.valueOf(motorRegra.getCdFicha()) + "\n";
-					resultado += "NroSeqInclusao:   " + String.valueOf(motorRegra.getNroSeqInclusao()) + "\n";
-					resultado += "cdLozalicao:   "  + motorRegra.getCdLocalizao() + "\n";
-					resultado += "Evento:   "  + String.valueOf(motorRegra.getCdEvento()) + "\n";
-					resultado += "Glosa:   " + String.valueOf(motorRegra.getCdGlosa()) + "\n";
-					
-					System.out.println(resultado);
-					
-					MotorRegraDAO motorregraDAO = new MotorRegraDAO();
-					motorregraDAO.adiciona (motorRegra);
+		     System.out.println(stringBuiderDetalhesMotor.toString());
 					
 					System.out.println("\n Deseja executar novamente ? \n");
 					controlador = ler.nextInt();
@@ -67,8 +67,8 @@ public class App
 		 
 			}
     	
-    	System.exit(0);
+    	
     }
 
 	
-}
+
