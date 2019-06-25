@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.TesteWS.Entity.MotorRegra;
-import br.com.TesteWS.Entity.MotorRegras;
+
 import br.com.TesteWS.Factory.BaseDAO;
 
 
