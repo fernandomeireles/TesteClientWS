@@ -9,7 +9,8 @@ public class MotorRegra {
 	protected int NroSeqInclusao;
 	protected String cdLocalizao;
 	protected int cdEvento;	
-	protected ArrayList cdGlosa;
+	protected int cdGlosa;
+	protected String MotivoGlosa;
 	/*
 	 * protected List<MotorGlosas> cdGlosa;
 	 * 
@@ -26,6 +27,12 @@ public class MotorRegra {
 	 * public void setCdGlosa(List<MotorGlosas> cdGlosa) { this.cdGlosa = cdGlosa; }
 	 */
 	
+	public String getMotivoGlosa() {
+		return MotivoGlosa;
+	}
+	public void setMotivoGlosa(String motivoGlosa) {
+		MotivoGlosa = motivoGlosa;
+	}
 	public int getCdFicha() {
 		return cdFicha;
 	}
@@ -50,12 +57,14 @@ public class MotorRegra {
 	public void setCdEvento(int cdEvento) {
 		this.cdEvento = cdEvento;
 	}
-	public ArrayList getCdGlosa() {
+	public int getCdGlosa() {
 		return cdGlosa;
 	}
-	public void setCdGlosa(ArrayList cdGlosa) {
+	public void setCdGlosa(int cdGlosa) {
 		this.cdGlosa = cdGlosa;
 	}
+	
+	
 	
 	
 	
