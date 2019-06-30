@@ -19,6 +19,7 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
+import br.com.TesteWS.Entity.MotorRegraEvento;
 import br.com.TesteWS.Entity.MotorRegraFicha;
 
 public class MotorRegraService {
@@ -39,30 +40,46 @@ public class MotorRegraService {
 	}
 		
 		
-	public void novoConsumo() {
+	public void novoConsumo(int codigoFicha) {
 		try {
-			HttpResponse<JsonNode> response = Unirest.get("http://5d09201b034e500014010ef2.mockapi.io/motor-regras-processamento/resources/execute/Ficha/1")
+			HttpResponse<JsonNode> response = Unirest.get("http://5d09201b034e500014010ef2.mockapi.io/motor-regras-processamento/resources/execute/Ficha/"+(String.valueOf(codigoFicha)))
 					  .header("cache-control", "no-cache")
 					  .header("Postman-Token", "ebda2744-9c1d-4711-a97d-afb0da4c1505")
 					  .asJson();
 			
 			JSONObject json = response.getBody().getObject();
-			MotorRegraFicha ficha = new MotorRegraFicha();
+			MotorRegraFicha motorficha = new MotorRegraFicha();
+			MotorRegraEvento motorevento = new MotorRegraEvento();
 			
-			ficha.setFicha(json.getString("Ficha"));
+			motorficha.setFicha(json.getString("Ficha"));
+			
 			JSONArray eventosJson = json.getJSONArray("Evento");
 			
 			for(int i=0; i<eventosJson.length(); i++) {
-				JSONObject evento = eventosJson.getJSONObject(i);
-				System.out.println("Evento: " + evento.getString("cdEvento"));
 				
+				JSONObject evento = eventosJson.getJSONObject(i);
+								
 				JSONArray glosas = evento.getJSONArray("Glosa");
-				StringBuilder glosasStringBuilder = new StringBuilder();
-				glosasStringBuilder.append("Glosas: ");
+				
+				//StringBuilder glosasStringBuilder = new StringBuilder();
+				//glosasStringBuilder.append("Motor: ");
+				
+				
+				
 				for(int j=0; j<glosas.length(); j++) {
-					glosasStringBuilder.append(glosas.get(j) + ", ");
+					
+					motorevento.setCdEvento(evento.getString("cdEvento"));
+					motorevento.setCdLocalizacao(evento.getString("cdLocalizacao"));
+					motorevento.setNroSeqInclusao(String.valueOf(evento.getInt("nroSeqInclusao")));
+					//motorevento.Glosa[j]  = String.valueOf((glosas.get(j)));
+					
+					System.out.println(motorficha.getFicha()+" - "+motorevento.getCdEvento()+" - "+motorevento.getCdLocalizacao()+" - "+motorevento.getNroSeqInclusao()+" - "+glosas.get(j));
+					
+					//System.out.println(motorficha.getFicha()+" - "+evento.getString("cdEvento")+" - "+evento.getInt("nroSeqInclusao")+" - "+evento.getString("cdLocalizacao")+" - "+glosas.get(j));
+															
+					//glosasStringBuilder.append(evento.getString("cdEvento")+" - "+glosas.get(j) + ", ");
 				}
-				System.out.println(glosasStringBuilder.toString());
+				
 			}
 			
 		} catch (UnirestException e) {

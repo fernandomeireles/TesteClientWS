@@ -7,14 +7,14 @@ import br.com.TesteWS.Entity.MotorRegra;
 
 public class MotorRegraEvento
 {
-	public String cdEvento;
-    public String FichaId;
+	private String cdEvento;
+	private String FichaId;
 
-    public String nroSeqInclusao;
+	private String nroSeqInclusao;
 
-    public String cdLocalizacao;
+	private String cdLocalizacao;
 
-    public String[] Glosa;
+	private String[] Glosa;
   
 
     public String getFichaId ()
@@ -70,26 +70,7 @@ public class MotorRegraEvento
     @Override
     public String toString()
     {
-		/*
-		 * List <String> lista = new ArrayList();
-		 * 
-		 * lista.add(cdEvento); lista.add(String.valueOf(nroSeqInclusao));
-		 * lista.add(cdLocalizacao);
-		 * 
-		 * String[] strings = (String[]) lista.toArray (new String[lista.size()]);
-		 */
-    	MotorRegraFicha motorregra = new MotorRegraFicha();
-    	
-    	 String teste[] = new String [4];
-    	 for(int i=0; i<(Glosa.length); i++){
-    	 teste[0] = cdEvento;
-         teste[1] = nroSeqInclusao;
-         teste[2] = cdLocalizacao;
-    	 teste[3] = Glosa[i];	 
-    	System.out.println(teste[0]+"-"+teste[1]+"-"+teste[2]+"-"+teste[3]);
-    	
-    	}
-    	 
+		 
     	
      
         

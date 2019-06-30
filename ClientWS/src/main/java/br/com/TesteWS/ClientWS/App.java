@@ -16,7 +16,7 @@ public class App
     public static void main( String[] args )
     {
     	MotorRegraService teste = new  MotorRegraService();
-    	teste.novoConsumo();
+    	teste.novoConsumo(1);
     	
     	 System.exit(0);
     	

@@ -5,9 +5,9 @@ package br.com.TesteWS.Entity;
 public class MotorRegraFicha
 {
 	
-    public String Ficha;
+    private String Ficha;
 
-    public MotorRegraEvento[] Evento;
+    private MotorRegraEvento[] Evento;
 
     public String getFicha ()
     {
